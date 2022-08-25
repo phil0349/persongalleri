@@ -1,7 +1,7 @@
 let container = document.querySelector("section");
 let temp = document.querySelector("template");
 
-const fil = "alleDyr.json";
+const fil = "persongalleri.json";
 
 async function hentdata(fil) {
   const resultat = await fetch(fil);
@@ -9,13 +9,12 @@ async function hentdata(fil) {
   vis(json);
 }
 
-function vis(dyr) {
-  dyr.forEach((etDyr) => {
+function vis(personer) {
+  personer.forEach((enPerson) => {
     let klon = temp.cloneNode(true).content;
-    klon.querySelector("h2").textContent = etDyr.navn;
-    klon.querySelector(".art").textContent = etDyr.type;
-    klon.querySelector(".sted").textContent = etDyr.levested;
-    klon.querySelector("img").src = etDyr.billede;
+    klon.querySelector("h2").textContent = enPerson.navn;
+    klon.querySelector(".født").textContent = enPerson.født;
+    klon.querySelector("img").src = enPerson.billede;
     container.appendChild(klon);
   });
 }
