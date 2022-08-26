@@ -14,8 +14,8 @@ async function hentData() {
 //function vis(data) {
 //  console.log(data); }
 
-const main = document.querySelcetor("main");
-const temp = document.querySelcetor("template").content;
+const main = document.querySelector("main");
+const temp = document.querySelector("template").content;
 
 function vis(json) {
   json.forEach((enPerson) => {
