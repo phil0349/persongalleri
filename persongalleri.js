@@ -6,9 +6,9 @@ const mereinfo = {
 };
 
 async function hentData() {
-  const response = await fetch(endpoint, mereinfo);
-  const json = await response.json();
-  console.log(json);
+  const resspons = await fetch(endpoint, mereinfo);
+  const json = await resspons.json();
+  //console.log(json);
   vis(json);
 }
 
@@ -21,15 +21,15 @@ const temp = document.querySelcetor("template").content;
 function vis(json) {
   //console.log(json);
   json.forEach((person) => {
-    const klon = temp.cloneNode(true).content;
+    const klon = temp.cloneNode(true);
     klon.querySelector(".img").src = "faces/" + person.billede;
     klon.querySelector(".navn").textContent = person.navn;
-    klon.querySelector(".email").textContent = person.efternavn;
-    klon.querySelector(".fødselsdag").textContent = person.fødselsdag;
     klon.querySelector(".titel").textContent = person.titel;
+    klon.querySelector(".fødselsdag").textContent = person.fødselsdag;
+    klon.querySelector(".email").textContent = person.efternavn;
     //klon.querySelector(".religion").textContent = enPerson.religion;
     //klon.querySelector(".hobby").textContent = enPerson.hobby;
-    container.appendChild(klon);
+    main.appendChild(klon);
   });
 }
 
