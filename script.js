@@ -11,9 +11,6 @@ async function hentData() {
   vis(json);
 }
 
-//function vis(data) {
-//  console.log(data); }
-
 const main = document.querySelector("main");
 const temp = document.querySelector("template").content;
 
