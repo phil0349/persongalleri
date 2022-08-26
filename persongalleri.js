@@ -20,16 +20,15 @@ const temp = document.querySelcetor("template").content;
 
 function vis(json) {
   //console.log(json);
-  json.forEach((enPerson) => {
+  json.forEach((person) => {
     const klon = temp.cloneNode(true).content;
-    klon.querySelector(".img").src = "faces/" + enPerson.billede;
-    klon.querySelector(".navn").textContent = enPerson.navn;
-    klon.querySelector(".email").textContent = enPerson.efternavn;
-    klon.querySelector(".fødselsdag").textContent = enPerson.fødselsdag;
-    klon.querySelector(".titel").textContent = enPerson.titel;
+    klon.querySelector(".img").src = "faces/" + person.billede;
+    klon.querySelector(".navn").textContent = person.navn;
+    klon.querySelector(".email").textContent = person.efternavn;
+    klon.querySelector(".fødselsdag").textContent = person.fødselsdag;
+    klon.querySelector(".titel").textContent = person.titel;
     //klon.querySelector(".religion").textContent = enPerson.religion;
     //klon.querySelector(".hobby").textContent = enPerson.hobby;
-
     container.appendChild(klon);
   });
 }
