@@ -1,15 +1,55 @@
-/* ØVELSE 2 */
+/* ØVELSE FILTRERING */
+const header = document.querySelector("header h1");
+const url = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
+const mereinfo = {
+  headers: {
+    "x-apikey": "600fe9211346a1524ff12e31",
+  },
+};
+document.addEventListener("DOMXContentLoaded", start);
+let personer;
+let filter = "alle";
+function start() {
+  const filterKnapper = document.querySelectorAll("nav button");
+  filterKnapper.forEach((knap) => knap.addEventListener("click", filtrerPersoner));
+  loadJSON();
+}
 
-let ja = document.querySelector("troende");
-let nej = document.querySelector("ikke-troende");
-let tvivler = document.querySelector("tvivler");
-let alle = document.querySelector("alle");
+function filtrerPersoner() {
+  filter = this.dataset.troende;
+  visPersoner();
+}
 
-/* FRA TIDLIGERE PROJEKT */
+async function loadJson() {
+  const JSONData = await fetch("https://persongalleri-5d3e.restdb.io/rest/persongalleri", {
+    headers: myHeaders,
+  });
+}
+
+personer = await JSONData.json();
+console.log("Personer", personer);
+visPersoner();
+
+function visPersoner() {
+  const dest = document.querySelector("#liste");
+  const skabelon = document.querySelector("template").content;
+  dest.textContent = "";
+  personer.forEach((person) => {
+    console.log("Troende", person.troende);
+    if (filter == person.troende || filter == "alle") {
+      const klon = skabelon.cloneNode(true);
+      klon.querySelector(".navn").textContent = person.fornavn + " " + person.efternavn;
+      klon.querySelector(".img").src = url + person.billede;
+      dest.appendChild(klon);
+    }
+  });
+}
+
+/* FRA TIDLIGERE PROJEKT 
 
 const endpoint = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
 const mereinfo = {
-  header: {
+  headers: {
     "x-apikey": "600fe9211346a1524ff12e31",
   },
 };
@@ -35,4 +75,6 @@ function vis(json) {
   });
 }
 
-hentData();
+hentData(); 
+
+*/
