@@ -1,8 +1,10 @@
 /* ØVELSE FILTRERING */
 const header = document.querySelector("header h1");
+//const medieurl = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
 const medieurl = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
 const myHeaders = {
   headers: {
+    //"x-apikey": "600fe9211346a1524ff12e31",
     "x-apikey": "600fe9211346a1524ff12e31",
   },
 };
