@@ -1,7 +1,7 @@
 /* ØVELSE FILTRERING */
 const header = document.querySelector("header h1");
-const url = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
-const mereinfo = {
+const medieurl = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
+const myHeaders = {
   headers: {
     "x-apikey": "600fe9211346a1524ff12e31",
   },
@@ -12,23 +12,25 @@ let filter = "alle";
 function start() {
   const filterKnapper = document.querySelectorAll("nav button");
   filterKnapper.forEach((knap) => knap.addEventListener("click", filtrerPersoner));
-  loadJSON();
+  loadJson();
 }
 
 function filtrerPersoner() {
   filter = this.dataset.troende;
+  document.querySelector(".valgt").classList.remove("valgt");
+  this.classList.add("valgt");
   visPersoner();
+  header.textContent = this.textContent;
 }
 
 async function loadJson() {
   const JSONData = await fetch("https://persongalleri-5d3e.restdb.io/rest/persongalleri", {
     headers: myHeaders,
   });
+  personer = await JSONData.json();
+  console.log("Personer", personer);
+  visPersoner();
 }
-
-personer = await JSONData.json();
-console.log("Personer", personer);
-visPersoner();
 
 function visPersoner() {
   const dest = document.querySelector("#liste");
@@ -39,7 +41,7 @@ function visPersoner() {
     if (filter == person.troende || filter == "alle") {
       const klon = skabelon.cloneNode(true);
       klon.querySelector(".navn").textContent = person.fornavn + " " + person.efternavn;
-      klon.querySelector(".img").src = url + person.billede;
+      klon.querySelector(".img").src = medieurl + person.billede;
       dest.appendChild(klon);
     }
   });
