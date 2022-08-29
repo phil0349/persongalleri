@@ -1,50 +1,44 @@
 /* ØVELSE FILTRERING */
-const header = document.querySelector("header h1");
-//const medieurl = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
-const medieurl = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
-const myHeaders = {
+const header = document.querySelector("h1");
+const endpoint = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
+const mereinfo = {
   headers: {
-    //"x-apikey": "600fe9211346a1524ff12e31",
     "x-apikey": "600fe9211346a1524ff12e31",
   },
 };
-document.addEventListener("DOMXContentLoaded", start);
-let personer;
+
 let filter = "alle";
-function start() {
-  const filterKnapper = document.querySelectorAll("nav button");
-  filterKnapper.forEach((knap) => knap.addEventListener("click", filtrerPersoner));
-  loadJson();
-}
+let data;
+
+const filterKnapper = document.querySelectorAll("nav button");
+filterKnapper.forEach((knap) => knap.addEventListener("click", filtrerPersoner));
+hentData();
 
 function filtrerPersoner() {
   filter = this.dataset.troende;
   document.querySelector(".valgt").classList.remove("valgt");
   this.classList.add("valgt");
-  visPersoner();
+  vis(data);
   header.textContent = this.textContent;
 }
 
-async function loadJson() {
-  const JSONData = await fetch("https://persongalleri-5d3e.restdb.io/rest/persongalleri", {
-    headers: myHeaders,
-  });
-  personer = await JSONData.json();
-  console.log("Personer", personer);
-  visPersoner();
+async function hentData() {
+  const response = await fetch(endpoint, mereinfo);
+  data = await response.json();
+  vis(data);
 }
 
-function visPersoner() {
-  const dest = document.querySelector("#liste");
-  const skabelon = document.querySelector("template").content;
-  dest.textContent = "";
-  personer.forEach((person) => {
+function vis() {
+  const main = document.querySelector("main");
+  const temp = document.querySelector("template").content;
+  main.textContent = "";
+  data.forEach((person) => {
     console.log("Troende", person.troende);
     if (filter == person.troende || filter == "alle") {
-      const klon = skabelon.cloneNode(true);
-      klon.querySelector(".navn").textContent = person.fornavn + " " + person.efternavn;
-      klon.querySelector(".img").src = medieurl + person.billede;
-      dest.appendChild(klon);
+      const klon = temp.cloneNode(true);
+      klon.querySelector(".billede").src = "faces/" + person.billede;
+      klon.querySelector(".navn").textContent = person.fornavn;
+      main.appendChild(klon);
     }
   });
 }
