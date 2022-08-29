@@ -1,3 +1,12 @@
+/* ØVELSE 2 */
+
+let ja = document.querySelector("troende");
+let nej = document.querySelector("ikke-troende");
+let tvivler = document.querySelector("tvivler");
+let alle = document.querySelector("alle");
+
+/* FRA TIDLIGERE PROJEKT */
+
 const endpoint = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
 const mereinfo = {
   header: {
