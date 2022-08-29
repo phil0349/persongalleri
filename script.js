@@ -1,6 +1,6 @@
 const endpoint = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
 const mereinfo = {
-  header: {
+  headers: {
     "x-apikey": "600fe9211346a1524ff12e31",
   },
 };
@@ -8,6 +8,7 @@ const mereinfo = {
 async function hentData() {
   const response = await fetch(endpoint, mereinfo);
   const json = await response.json();
+  console.log(json);
   vis(json);
 }
 
