@@ -57,7 +57,7 @@ function visPerson(personData) {
   popup.querySelector("h3").textContent = personData.titel;
   popup.querySelector("img").src = "faces/" + personData.billede;
   popup.querySelector("p").textContent = personData.email;
-  popup.querySelector("p+p").textContent = "født: " + dato.slice(8, 10) + "/" + dato.slice(5, 8) + dato.slice(0, 4);
+  popup.querySelector("p+p").textContent = personData.fødselsdag;
   popup.querySelector("p+p+p").textContent = personData.hobby;
   popup.addEventListener("click", () => (popup.style.display = "none"));
 }
