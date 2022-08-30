@@ -38,6 +38,9 @@ function vis() {
       const klon = temp.cloneNode(true);
       klon.querySelector(".billede").src = "faces/" + person.billede;
       klon.querySelector(".navn").textContent = person.fornavn;
+      klon.querySelector("p").textContent = person.email;
+      const dato = person.fødselsdag;
+      klon.querySelector("p+p").textContent = "født: " + dato.slice(8, 10) + "/" + dato.slice(5, 8) + dato.slice(0, 4);
       main.appendChild(klon);
     }
   });
