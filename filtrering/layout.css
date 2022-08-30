@@ -43,8 +43,7 @@ img {
   cursor: pointer;
 }
 
-#popup,
-article {
+#popup article {
   width: 70%;
   background-color: #47474d80;
   padding: 12px;
