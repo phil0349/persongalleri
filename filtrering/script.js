@@ -36,6 +36,7 @@ function vis() {
     console.log("Troende", person.troende);
     if (filter == person.troende || filter == "alle") {
       const klon = temp.cloneNode(true);
+      klon.querySelector("article").addEventListener("click", () => visPerson(person));
       klon.querySelector(".billede").src = "faces/" + person.billede;
       klon.querySelector(".navn").textContent = person.fornavn;
       klon.querySelector("p").textContent = person.email;
@@ -44,6 +45,10 @@ function vis() {
       main.appendChild(klon);
     }
   });
+}
+
+function visPerson(personData) {
+  console.log(personData);
 }
 
 hentData();
