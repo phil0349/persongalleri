@@ -31,3 +31,25 @@ img {
   max-width: 100%;
   border-radius: 0.5em;
 }
+
+#popup {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#popup,
+article {
+  width: 70%;
+  background-color: #47474d80;
+  padding: 12px;
+  border-radius: 5px;
+  left: 13rem;
+  top: 5rem;
+  color: white;
+}

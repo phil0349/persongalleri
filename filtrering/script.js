@@ -49,6 +49,12 @@ function vis() {
 
 function visPerson(personData) {
   console.log(personData);
+  const popup = document.querySelector("#popup");
+  popup.style.display = "flex";
+  popup.querySelector("h2").textContent = personData.fornavn;
+  popup.querySelector("img").src = "faces/" + personData.billede;
+  popup.querySelector("p").textContent = personData.email;
+  popup.addEventListener("click", () => (popup.style.display = "none"));
 }
 
 hentData();
