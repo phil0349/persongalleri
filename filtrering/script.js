@@ -43,6 +43,8 @@ function vis() {
   });
 }
 
+hentData();
+
 /* FRA TIDLIGERE PROJEKT 
 
 const endpoint = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
