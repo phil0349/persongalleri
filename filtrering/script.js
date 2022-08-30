@@ -47,13 +47,18 @@ function vis() {
   });
 }
 
+document.querySelector("#luk").addEventListener("click", () => (popup.style.display = "none"));
+
 function visPerson(personData) {
   console.log(personData);
   const popup = document.querySelector("#popup");
   popup.style.display = "flex";
   popup.querySelector("h2").textContent = personData.fornavn;
+  popup.querySelector("h3").textContent = personData.titel;
   popup.querySelector("img").src = "faces/" + personData.billede;
   popup.querySelector("p").textContent = personData.email;
+  popup.querySelector("p+p").textContent = "født: " + dato.slice(8, 10) + "/" + dato.slice(5, 8) + dato.slice(0, 4);
+  popup.querySelector("p+p+p").textContent = personData.hobby;
   popup.addEventListener("click", () => (popup.style.display = "none"));
 }
 
